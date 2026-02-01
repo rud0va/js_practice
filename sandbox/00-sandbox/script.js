@@ -1,43 +1,54 @@
-// Teil 1
-// Frage 1: Literals sind die "wörtiche" also direktere Schreibweise. Beides macht im Prinzip das gleiche, aber das Array Literal ist einfach kürzer und deshalb best practice.
+// Aufgabe 1
+const arr = ["a", "b", "c"];
+arr.push("d");
+arr.shift();
 
-// Frage 2: Die length counter wird auf zwei gesetzt. Somit wird das Array acuh faktisch auf die Länge gesetzt und alle Werte >= Index 2 werden unwiederruflich gelöscht
+console.log(arr); // b, c, d
 
-// Frage 3: Länge ist eine EIgenschaft des Arrays, während push etwas mit dem Array macht/es verändert
+// Aufgabe 2
+const fruits = ["apple", "banana", "cherry"];
+console.log(fruits[0]);
+console.log(fruits[fruits.length - 1]);
+fruits[1] = "mango";
+console.log(fruits);
 
-//Teil 2
+// Aufgabe 3
+const numbers = [1, 2, 3, 4];
+const doubledNumbers = [];
+numbers.forEach((number) => doubledNumbers.push(number * 2));
+console.log(doubledNumbers);
+
 // Aufgabe 4
-let items = ["apple", "banana"];
+const ages = [12, 18, 21, 16, 30];
+const adults = ages.filter((age) => age > 17);
+console.log(adults);
 
-items.push("cherry");
-items.shift();
-items.unshift("kiwi");
-
-console.log(items);
-
-// Aufgabe 5: Meiner Meinung nach geht diese Aufgabe nicht mit den bisherigen Methoden die ich gelernt habe.
-const nums = [1, 2, 3, 4];
-const newArr = [];
-arr.slice();
-
-console.log(nums);
-console.log(newArr);
+// Aufgabe 5
+const prices = [10, 20, 30];
+const sum = prices.reduce((acc, cur) => acc + cur);
+console.log(sum);
 
 // Aufgabe 6
-function isEmpty(arr) {
-  return arr.length < 1;
-}
+const a = [1, 2];
+const b = [3, 4];
 
-// Aufgabe 7: new Array(3) erstellt ein Array der Länge drei. Array.of(3) erstellt ein Array mit dem Wert 3. Extra dafür wurde Array.of damals konzipiert, um das new Array() Problem zu lösen, wenn man nur einen Wert anlegen will.
+// const c = a.concat(b);
+const c = [...a, ...b];
+console.log(c);
 
-// Teil 3
-// Konzepte bitte erkläre mir nochmal Mutation vs. Reassignment und Expression vs. Literal
+// Aufgabe 7
+const matrix = [
+  [1, 2],
+  [3, 4],
+  [5, 6],
+];
 
-// Aufgabe 8:
+console.log(matrix[1][1]);
+console.log(matrix[2][0]);
 
-const arr = [1, 2, 3];
-const copy = arr;
+// Aufgabe 8
+const items = ["code", "coffee", "sleep", "code"];
+// Funktionen kommen erst im dritten Abschnitt dran. Ja, ich hatte das alles schon einmal gemacht aber ich steige ja wieder neu ein. Du beziehst dich auf Fragen oder Wissen, was ich vor meinem Wiedereinstieg mit dir besprochen hatte
 
-copy.push(4);
-
-console.log(arr); //1, 2, 3, 4
+// Aufgabe 9
+// Bei einer Mutation wird das Array selbst verändert. Bei einem Reassignment weist man die Werte des ursprünglichen Arras einem neuen Array zu.
