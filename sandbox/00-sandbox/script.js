@@ -1,54 +1,69 @@
 // Aufgabe 1
-const arr = ["a", "b", "c"];
-arr.push("d");
-arr.shift();
+const nums = [1, 2, 3];
+nums.push(4);
+nums.unshift(0);
+nums.pop();
 
-console.log(arr); // b, c, d
+console.log(nums); // 0, 1, 2, 3
 
 // Aufgabe 2
-const fruits = ["apple", "banana", "cherry"];
-console.log(fruits[0]);
-console.log(fruits[fruits.length - 1]);
-fruits[1] = "mango";
-console.log(fruits);
+const user = {
+  name: "Mila",
+  age: 19,
+  skills: ["JS", "HTML", "CSS"],
+};
+
+const x = Object.keys(user).length; // x = 3, die Objekt-Methode keys(user) gibt ein Array mit allen object keys zurück und die Eigenschaft length gibt dann die Länge des Arrays zurück. Also 3.
 
 // Aufgabe 3
-const numbers = [1, 2, 3, 4];
-const doubledNumbers = [];
-numbers.forEach((number) => doubledNumbers.push(number * 2));
-console.log(doubledNumbers);
+const colors = ["red", "green", "blue"];
+console.log(colors[1]);
+colors[2] = "purple";
+console.log(colors[colors.length - 1]);
 
-// Aufgabe 4
-const ages = [12, 18, 21, 16, 30];
-const adults = ages.filter((age) => age > 17);
-console.log(adults);
+// Aufgbe 4
+const prices = [10, 20, 30];
+const usury = prices.map((price) => price * 1.2);
 
 // Aufgabe 5
-const prices = [10, 20, 30];
-const sum = prices.reduce((acc, cur) => acc + cur);
-console.log(sum);
+const scores = [45, 82, 90, 67, 50];
+const big = scores.filter((score) => score >= 60);
 
 // Aufgabe 6
-const a = [1, 2];
-const b = [3, 4];
-
-// const c = a.concat(b);
-const c = [...a, ...b];
-console.log(c);
+const points = [5, 10, 15];
+const total = points.reduce((acc, cur) => acc + cur, 0);
 
 // Aufgabe 7
-const matrix = [
-  [1, 2],
-  [3, 4],
-  [5, 6],
-];
+const a = ["x", "y"];
+const b = ["z"];
 
-console.log(matrix[1][1]);
-console.log(matrix[2][0]);
+const concatMyBoy = a.concat(b);
+const betterSpreadIt = [...a, ...b];
 
 // Aufgabe 8
-const items = ["code", "coffee", "sleep", "code"];
-// Funktionen kommen erst im dritten Abschnitt dran. Ja, ich hatte das alles schon einmal gemacht aber ich steige ja wieder neu ein. Du beziehst dich auf Fragen oder Wissen, was ich vor meinem Wiedereinstieg mit dir besprochen hatte
+const data = [
+  ["apple", "banana"],
+  ["carrot", "tomato"],
+];
+
+console.log(data[0][1]);
+console.log(data[1][0]);
 
 // Aufgabe 9
-// Bei einer Mutation wird das Array selbst verändert. Bei einem Reassignment weist man die Werte des ursprünglichen Arras einem neuen Array zu.
+const items = ["pen", "book", "pen", "lamp"];
+
+function analyzeItems(arr) {
+  const unique = arr.filter((word, index) => arr.indexOf(word) === index);
+  const uniqueItems = unique.map((word) => word.toUpperCase());
+  const count = uniqueItems.length;
+  return {
+    uniqueItems,
+    count,
+  };
+}
+
+console.log(analyzeItems(items));
+
+// Aufgabe 10
+// Mutation verändert den Inhalt des Arrays selbst, während Reassignment die Referenz der Variable einfach auf ein neues Array zeigt.
+// Da length eine Eigenschaft des Arrays selbst ist. Ein Array besitzt immer eine Länge und somit diese Eigeschaft.
