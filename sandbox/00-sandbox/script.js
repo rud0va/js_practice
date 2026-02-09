@@ -1,69 +1,67 @@
 // Aufgabe 1
-const nums = [1, 2, 3];
-nums.push(4);
-nums.unshift(0);
-nums.pop();
+const words = ["hi", "there", "js"];
+const result = words.map((w) => w.toUpperCase()).filter((w) => w.length > 2);
 
-console.log(nums); // 0, 1, 2, 3
+console.log(result); // THERE
 
 // Aufgabe 2
 const user = {
   name: "Mila",
   age: 19,
-  skills: ["JS", "HTML", "CSS"],
+  city: "Berlin",
 };
 
-const x = Object.keys(user).length; // x = 3, die Objekt-Methode keys(user) gibt ein Array mit allen object keys zurück und die Eigenschaft length gibt dann die Länge des Arrays zurück. Also 3.
+console.log(Object.keys(user).length); // 3
+console.log(Object.keys(user));
 
 // Aufgabe 3
-const colors = ["red", "green", "blue"];
-console.log(colors[1]);
-colors[2] = "purple";
-console.log(colors[colors.length - 1]);
+const sentence = "javascript is fun";
+const upperCase = sentence.toUpperCase().split(" ");
+console.log(upperCase);
 
-// Aufgbe 4
-const prices = [10, 20, 30];
-const usury = prices.map((price) => price * 1.2);
+// Aufgabe 4
+const words2 = ["code", "coffee", "focus", "sleep"];
+const longWords = words2.filter((w) => w.length > 4);
+console.log(longWords);
 
 // Aufgabe 5
-const scores = [45, 82, 90, 67, 50];
-const big = scores.filter((score) => score >= 60);
+const product = {
+  name: "Laptop",
+  price: 1200,
+  tags: ["tech", "office", "work"],
+};
+
+console.log(Object.keys(product).length); // 3
+console.log(product.tags.length); // 3
+const tagsUpperCase = product.tags.map((t) => t.toUpperCase());
+console.log(tagsUpperCase);
 
 // Aufgabe 6
-const points = [5, 10, 15];
-const total = points.reduce((acc, cur) => acc + cur, 0);
-
-// Aufgabe 7
-const a = ["x", "y"];
-const b = ["z"];
-
-const concatMyBoy = a.concat(b);
-const betterSpreadIt = [...a, ...b];
-
-// Aufgabe 8
-const data = [
-  ["apple", "banana"],
-  ["carrot", "tomato"],
+const users = [
+  { name: "Anna", age: 17 },
+  { name: "Tom", age: 22 },
+  { name: "Lisa", age: 19 },
 ];
 
-console.log(data[0][1]);
-console.log(data[1][0]);
+const legalAge = users.filter((u) => u.age >= 18);
+const names = legalAge.map((u) => u.name);
+console.log(names);
 
-// Aufgabe 9
-const items = ["pen", "book", "pen", "lamp"];
+// Aufgabe 7
+const text = "Learn JavaScript Learn Arrays";
 
-function analyzeItems(arr) {
-  const unique = arr.filter((word, index) => arr.indexOf(word) === index);
-  const uniqueItems = unique.map((word) => word.toUpperCase());
-  const count = uniqueItems.length;
-  return {
-    uniqueItems,
-    count,
-  };
+function analyzeText(text) {
+  const words = text.toLowerCase().split(" ");
+  const uniquewords = words.filter((w, i, arr) => i === arr.indexOf(w));
+  return { uniquewords: uniquewords, count: uniquewords.length };
 }
 
-console.log(analyzeItems(items));
+console.log(analyzeText(text));
 
-// Aufgabe 10
-// Mutation verändert den Inhalt des Arrays selbst, während Reassignment die Referenz der Variable einfach auf ein neues Array zeigt.
-// Da length eine Eigenschaft des Arrays selbst ist. Ein Array besitzt immer eine Länge und somit diese Eigeschaft.
+// Aufgabe 8
+// 1. Bei einer Mutation wird ein und dasselbe Array verändert, bei einem Reassignment wird dem Array eine neue Referenz auf ein Array übergeben.
+// 2. Weil man zunächst eine Array Methode anwendet, die ein Array zurückgibt und man dann die Eigenschaft des Array mit length abfragen kann. Man chained also Objekte und Arrays aneinander, um die jeweiligen Methoden des jeweiligen objects verwenden zu können.
+// 3. Da ein length einfach eine Eigenschaft eines Arrays ist und keine Methode. Und String Objekte sind faktisch Arrays.
+
+// Aufgabe 9
+// users übergibt einfach das komplette Array oder Objekt, während der spread operator ...users nur die Werte des Objekts oder Arrays in der Variablen b speichert.
