@@ -1,90 +1,80 @@
 // Aufgabe 1
-let x = 10;
+let value = "global";
 
 function test() {
-  let x = 20;
-  console.log(x); // 20
+  console.log(value);
+  let value = "local";
+  console.log(value);
 }
 
 test();
-console.log(x); // 10
+// error, weil trotz der globalen Variable value, will er in der Funktion im lexical Kontext auf die Variable value zugreifen, die aber erst nach dem ersten Aufruf deklariert wird und deshalb einen Fehler wirft.
 
 // Aufgabe 2
-if (true) {
-  let y = 5;
+function run() {
+  if (true) {
+    var a = 1;
+    let b = 2;
+  }
+
+  console.log(a);
+  console.log(b);
 }
 
-// console.log(y);
-
-// Es wird ein Fehler geworfen, da die Variable nur im Block scope verfügbar ist
+run();
+// 1 wird ausgegeben aber b nicht, da die Variable nur im if block verfügbar ist
 
 // Aufgabe 3
-if (true) {
-  var a = 1;
-  let b = 2;
+function makeCounter() {
+  let count = 0;
+
+  return function () {
+    count++;
+    return count;
+  };
 }
 
-console.log(a); // 1, da var global scope besitzt
-//console.log(b); // Reference error wegen block scope
+const counterA = makeCounter();
+const counterB = makeCounter();
+
+console.log(counterA()); //1
+console.log(counterA()); //2
+console.log(counterB()); //1
+console.log(counterA()); //3
+
+// Sie beeinflussen sicht nicht, weil zwei verschiedene Referenzen auf den counter bzw die nakeCounter Funktion zeigen
 
 // Aufgabe 4
-function counter() {
-  let count = 0;
-  console.log(++count);
+function greetLater(name) {
+  setTimeout(function () {
+    console.log("Hello " + name);
+  }, 1000);
 }
 
-counter();
-counter();
+greetLater("Mila");
+// Boah weiß nicht, was du meinst. Wegen dem Timer 1000ms?
 
 // Aufgabe 5
-const message = "global scope";
-console.log(message);
+const words = ["Learn", "JS", "Fast"];
 
-if (true) {
-  const message = "block scope";
-  console.log(message);
-}
+const result = words
+  .map((w) => w.toLowerCase())
+  .filter((w) => w.length > 2)
+  .join("-");
+
+console.log(result);
+// learn-fast
+// Die jeweiligen Strings im Array werden mit der map Methode durchlaufen und mit toLowerCase vin klein geschriebene Worte geändert. Das dort zurückgegebene Array wird gefiltert. Sodass nur noch Einträge im Array behalten werden, die länger als 2 Buchstaben sind. Diese beiden werden dann letztendlich mit join mit einem Bindestrich zu einem String verbunden.
 
 // Aufgabe 6
-let level = "global";
-
-function outer() {
-  let level = "outer";
-
-  function inner() {
-    let level = "inner";
-    console.log(level);
-  }
-
-  inner();
-  console.log(level);
-}
-
-outer();
-console.log(level); // inner -> outer -> global
+const items = ["pen", "book", "pen", "lamp", "book"];
+// haha ich wusste das diese Aufgabe dran kommen wird :P
+const unique = items.filter(
+  (item, index, arr) => index === arr.indexOf(arr[index]),
+);
+console.log(unique);
 
 // Aufgabe 7
-function greet() {
-  let name = "Mila";
-
-  function sayHello() {
-    console.log("Hello " + name);
-  }
-
-  sayHello();
-}
-
-greet();
-// Durch closure kann auch die nested function sayHello auf diese Variable zugreifen.
-
-// Aufgabe 8
-{
-  let x = 1;
-}
-
-{
-  let x = 2;
-}
-
-console.log(x);
-// Hier wird ein Fehler ausgegeben, da die beiden Variablen x nur in ihrem jeweiligen block scope existieren.
+// 1. Wenn in der weiteren Umgebung definierte Variablen, trotzdem in einem anderen Block genutzt werden können. beispielsweise könnte eine Funktion in der ein if block verschachtelt ist, trotzdem auf Variablen aus dem if Block zugreifen. Ah ehrlich gesagtbin ich noch etwas unsicher bei Closure...
+// 2. Shadowing bedeutet das eine Variable eine andere verdeckt. So kann eine local Variable mit dem gleichen Namen, wie eine globale Variable, diese verdecken
+// 3. Weil alle drei ebenfalls über ein Array iterieren.
